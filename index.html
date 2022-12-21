@@ -1,21 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./src/styles/reset.css">
-    <link rel="stylesheet" href="./src/styles/index.css">
-    <title>Consumindo PokeAPI</title>
-  </head>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https: //fonts.googleapis.com/css2?family= IBM+Plex+Sans & family display=swap" rel="stylesheet">
+  <!-- css -->
+  <link rel="stylesheet" href="./src/styles/reset.css">
+  <link rel="stylesheet" href="./src/styles/index.css">
+  <title>Consumindo PokeAPI</title>
+</head>
+
+<body>
   <header>
-    <img src="./src/assets/pokeapi.png" alt="Logo PokeAPI">
-    <input type="text" placeholder="Pesquisar Pokemon">
+    <img class="logo" src="./src/assets/pokeapi.png" alt="Logo PokeAPI">
+    <div class="pokéSearch">
+      <input type="text" placeholder="Pesquisar por...">
+      <img class="search" src="./src/assets/search.svg" alt="Ìcone de pesquisa">
+    </div>
+    <h1>Lista de Pokémons</h1>
   </header>
-  <body>
-    <ul class="container">
-      <li></li>
-    </ul>
-  </body>
-  
+  <!-- <p>Carregando...</p> -->
+  <ul class="container">
+    <li>
+      <div> 
+        <img src="./src/assets/search.svg" alt="">
+      </div>
+      <span>oi</span>
+
+    </li>
+  </ul>
+</body>
+
 </html>
