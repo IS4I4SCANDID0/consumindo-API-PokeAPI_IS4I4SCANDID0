@@ -1,1 +1,1 @@
-/* Monte sua lógica aqui */
+// FAZER A RENDERIZAÇÃO COM forEach PRIMEIRO
