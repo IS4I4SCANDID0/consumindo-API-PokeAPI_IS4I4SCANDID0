@@ -62,7 +62,7 @@ input::placeholder {
     flex-direction: column;
 }
 
-.container--list > h1 {
+.container > h1 {
     color: var(--color-grey-5);
     font-weight: 500;
     font-size: 1.5rem;
