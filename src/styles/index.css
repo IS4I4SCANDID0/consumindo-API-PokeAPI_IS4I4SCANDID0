@@ -32,6 +32,7 @@ header{
 .pokéSearch {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     gap: 0.5rem;
     height: 50px;
     width: 180px;
@@ -57,6 +58,11 @@ input::placeholder {
     padding: 1rem;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
 .container--list {
     display: flex;
     flex-direction: column;
@@ -78,15 +84,31 @@ input::placeholder {
 
 .container--list > li {
     width: 280px;
-    Height: 50px;
+    Height: 68px;
     background-color: var(--color-grey-2);
     border-radius: var(--radius);
     margin-top: 2.5rem;
     color: var(--color-grey-5);
     display: flex;
-    padding: 1rem 1rem;
+    padding: 1rem auto 1rem;
     gap: 2.5rem; 
+    text-align: center;
 }
+
+li > h2 {
+    font-size: 1.1rem;
+    padding: 0.4rem;
+}
+
+.pokemons{
+    width: 76px;
+    height: 76px;
+    max-width: 90%;
+    max-height: 90%; 
+    object-fit: cover;
+    padding: 1rem 0 0 1rem;
+}
+    
 
 @media(min-width: 769px){
     header{
@@ -95,7 +117,7 @@ input::placeholder {
         margin: 2rem auto 7rem;
     }
 
-    .container--list > p {
+    .container--list > span {
         margin-top: 8rem ;
     }
 
@@ -108,16 +130,30 @@ input::placeholder {
     }
  
     .container--list > h1 {
-        margin: 3.5rem auto 4.5rem;
+        margin: 3.5rem auto 6rem;
+    
     }
 
     .container--list > li {
         width: 800px;
         max-width: 100%;
-        height: 65px;
+        height: 115px;
         padding: 1.3rem 0 1rem 3rem;
-        gap: 3.5rem; 
+        gap: 10rem; 
         font-size: 1.25rem;
     }
- 
+    
+    .pokemons {
+        width: 95px;
+        height: 95px;
+        max-width: 95%;
+        max-height: 95%; 
+        object-fit: cover;
+        padding: 1rem 0 0 1rem;
+    }
+
+    li > h2 {
+        font-size: 1.375;
+        padding: 1rem;
+    }
 }
