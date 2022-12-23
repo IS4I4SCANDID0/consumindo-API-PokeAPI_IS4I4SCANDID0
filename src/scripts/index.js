@@ -16,7 +16,6 @@ async function renderPokeSection(){
 
 
 function createPokeSection (pokemon){
-
     const listPoke = document.createElement('li')
     const liDiv = document.createElement('div')   
     
@@ -37,7 +36,7 @@ function createPokeSection (pokemon){
 }
 
 
-async function delightAPI () {
+async function delightAPI() {
     
     const load = document.querySelector('#loading')
     load.classList.add('hidden')
@@ -69,21 +68,33 @@ async function getPokemonByName(pokemonName){
     const pokeName = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`, {
         method:'GET' ,
         headers: {
-            'Content-type' : 'application/json'
+            'Content-type': 'application/json'
         }
     }) 
     .then(response => response.json())
     .then(response => {
+        
+        renderPokeSection(response)
         return response
     })
     
     return pokeName
 }
 renderPokeSection()
-// getPokemonByName('')
 
-// a resposta para a entrega está aqui
-//  || 
-//  \/
 
-//https://demos-kenzie-academy-brasil.s3.amazonaws.com/set22/m2/Sprint_5/m2-turma15-sprint5-demo3.mp4
+function renderSearch() {
+
+    const searchInput = document.querySelector('input')
+    const searchIcon = document.querySelector('.search')
+    
+    searchIcon.addEventListener('click', () => {
+
+        getPokemonByName(searchInput.value)
+    })
+}
+delightAPI()
+
+console.log(renderSearch('ivysaur')) 
+//A pesquisa etá retornando undefined descobrir pq isso está acontecendo
+//[/hipótese-1\rever as chamadas das funções primeiro, /hipótese-2\ depois avaliar a nessecidade de fazer outra função]  
