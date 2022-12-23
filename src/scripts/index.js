@@ -13,7 +13,7 @@ async function renderPokeSection(){
         pokemonList.appendChild(poke)
     })
 }
-
+renderPokeSection()
 
 function createPokeSection (pokemon){
     const listPoke = document.createElement('li')
@@ -36,11 +36,13 @@ function createPokeSection (pokemon){
 }
 
 
-async function delightAPI() {
+
+
+
+async function delightAPI(){
     
     const load = document.querySelector('#loading')
-    load.classList.add('hidden')
-
+    
     const PokemonAPI = await fetch(`https://pokeapi.co/api/v2/pokemon`, {
         method: 'GET' ,
         headers: {
@@ -50,25 +52,35 @@ async function delightAPI() {
 
     .then(
         response => response.json()
-    )
+        )
     
-    .then(
+        .then(
         response => response 
     )
     
     .catch(
         error => console.log(error)
-    )    
+        )    
+        
+        load.classList.add('hidden')
+        
+        return PokemonAPI
     
-    return PokemonAPI
 }
+delightAPI()
+
+
+    
+  
+  
+
 
 async function getPokemonByName(pokemonName){
 
     const pokeName = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`, {
         method:'GET' ,
         headers: {
-            'Content-type': 'application/json'
+            'Content-Type': 'application/json'
         }
     }) 
     .then(response => response.json())
@@ -80,7 +92,6 @@ async function getPokemonByName(pokemonName){
     
     return pokeName
 }
-renderPokeSection()
 
 
 function renderSearch() {
@@ -90,11 +101,15 @@ function renderSearch() {
     
     searchIcon.addEventListener('click', () => {
 
-        getPokemonByName(searchInput.value)
+        getPokemonByName(searchInput.value.toLowerCase().trim())
     })
 }
-delightAPI()
 
-console.log(renderSearch('ivysaur')) 
-//A pesquisa etá retornando undefined descobrir pq isso está acontecendo
-//[/hipótese-1\rever as chamadas das funções primeiro, /hipótese-2\ depois avaliar a nessecidade de fazer outra função]  
+console.log(getPokemonByName())
+
+conlose.log(renderSearch())
+
+// funçãop getPokemonByName está retornando em promessa, tem q ser convertida em realidade kkkkk.
+// brinks tem que ser convertida em objeto JavaScript
+// dar uma olhada na função de renderSearch, 
+// tentar fazer uma animação simples para ficar bonito

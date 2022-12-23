@@ -1,4 +1,6 @@
-header, body, ul, li, img, input {
+header, body, ul, 
+li, img, input, 
+span, div, main{
     margin: 0;
 	padding: 0;
 	border: 0;
