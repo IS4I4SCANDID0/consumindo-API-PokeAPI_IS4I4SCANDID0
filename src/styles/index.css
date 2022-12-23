@@ -63,6 +63,7 @@ input::placeholder {
 .container {
     display: flex;
     flex-direction: column;
+    transition: ease 1s;
 }
 
 .container--list {
@@ -96,6 +97,7 @@ input::placeholder {
     /* padding: 1rem auto 1rem; */
     gap: 2.5rem; 
     text-align: center;
+    transition: ease 1.5s;
 }
 
 li > h2 {

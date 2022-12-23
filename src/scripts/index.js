@@ -15,6 +15,8 @@ async function renderPokeSection(){
 }
 renderPokeSection()
 
+
+
 function createPokeSection (pokemon){
     const listPoke = document.createElement('li')
     const liDiv = document.createElement('div')   
@@ -50,50 +52,47 @@ async function delightAPI(){
         }
     })
 
-    .then(
-        response => response.json()
-        )
-    
-        .then(
-        response => response 
-    )
-    
-    .catch(
-        error => console.log(error)
-        )    
+    .then(response => response.json())
         
-        load.classList.add('hidden')
+    .then(response => response) 
         
-        return PokemonAPI
-    
+    .catch(error => console.log(error))   
+
+    load.classList.add('hidden')
+        
+    return PokemonAPI
+        
 }
 delightAPI()
-
+    
 
     
-  
-  
 
 
 async function getPokemonByName(pokemonName){
-
+    
     const pokeName = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`, {
         method:'GET' ,
         headers: {
             'Content-Type': 'application/json'
         }
     }) 
+    
     .then(response => response.json())
+    
     .then(response => {
         
-        renderPokeSection(response)
-        return response
+        // renderPokeSection()
+        
+        return(response)
     })
     
+    console.log(response)
     return pokeName
 }
-
-
+getPokemonByName()
+// console.log(getPokemonByName())       
+        
 function renderSearch() {
 
     const searchInput = document.querySelector('input')
@@ -104,12 +103,23 @@ function renderSearch() {
         getPokemonByName(searchInput.value.toLowerCase().trim())
     })
 }
+// renderSearch()
+// console.log(renderSearch())
+    
 
-console.log(getPokemonByName())
 
-conlose.log(renderSearch())
+
+// console.log(getPokemonByName())
+
 
 // funçãop getPokemonByName está retornando em promessa, tem q ser convertida em realidade kkkkk.
 // brinks tem que ser convertida em objeto JavaScript
 // dar uma olhada na função de renderSearch, 
 // tentar fazer uma animação simples para ficar bonito
+
+
+    
+  
+  
+
+
