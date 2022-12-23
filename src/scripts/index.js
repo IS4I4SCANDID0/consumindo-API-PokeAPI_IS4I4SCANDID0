@@ -13,7 +13,7 @@ async function renderPokeSection(){
         pokemonList.appendChild(poke)
     })
 }
-renderPokeSection()
+
 
 
 
@@ -44,7 +44,8 @@ function createPokeSection (pokemon){
 async function delightAPI(){
     
     const load = document.querySelector('#loading')
-    
+    // load.innerText = 'Carregando...'
+
     const PokemonAPI = await fetch(`https://pokeapi.co/api/v2/pokemon`, {
         method: 'GET' ,
         headers: {
@@ -58,13 +59,13 @@ async function delightAPI(){
         
     .catch(error => console.log(error))   
 
-    load.classList.add('hidden')
-        
+    // load.classList.add('hidden')
+    
     return PokemonAPI
-        
+    
 }
 delightAPI()
-    
+
 
     
 
@@ -82,15 +83,19 @@ async function getPokemonByName(pokemonName){
     
     .then(response => {
         
-        // renderPokeSection()
+        console.log(response)
+
+        renderPokeSection(response)
         
+
         return(response)
     })
     
-    console.log(response)
+    // console.log(response)
     return pokeName
+
 }
-getPokemonByName()
+// getPokemonByName()
 // console.log(getPokemonByName())       
         
 function renderSearch() {
@@ -100,10 +105,11 @@ function renderSearch() {
     
     searchIcon.addEventListener('click', () => {
 
-        getPokemonByName(searchInput.value.toLowerCase().trim())
+        getPokemonByName(searchInput.value.toLowerCase())
+        // console.log(getPokemonByName())
     })
 }
-// renderSearch()
+renderSearch()
 // console.log(renderSearch())
     
 
@@ -112,8 +118,7 @@ function renderSearch() {
 // console.log(getPokemonByName())
 
 
-// funçãop getPokemonByName está retornando em promessa, tem q ser convertida em realidade kkkkk.
-// brinks tem que ser convertida em objeto JavaScript
+// falta rederizar a pesquisa de nome no input
 // dar uma olhada na função de renderSearch, 
 // tentar fazer uma animação simples para ficar bonito
 
