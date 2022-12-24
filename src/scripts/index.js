@@ -57,6 +57,8 @@ async function delightAPI(){
     .then(response => response.json())
         
     .then(response => response) 
+
+    renderPokeSection()
         
     .catch(error => console.log(error))   
 
@@ -87,7 +89,7 @@ async function getPokemonByName(pokemonName){
         
         console.log(response)
 
-        renderPokeSection()
+      
         
 
         return(response)
@@ -103,12 +105,12 @@ async function getPokemonByName(pokemonName){
 function renderSearch() {
 
     const searchInput = document.querySelector('input')
-    const searchIcon = document.querySelector('.search')
+    const searchIcon = document.querySelector('#search')
     
     searchIcon.addEventListener('click', () => {
         // console.log('click')
         getPokemonByName(searchInput.value.toLowerCase())
-        console.log(getPokemonByName())
+        // console.log(getPokemonByName())
     })
 }
 renderSearch()
