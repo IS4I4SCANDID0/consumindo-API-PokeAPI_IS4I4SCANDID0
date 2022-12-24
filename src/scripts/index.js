@@ -7,18 +7,21 @@ async function renderPokeSection(){
     pokemonList.innerHTML = ''
     
     pokemons.results.forEach(pokemon => {
-
+        
         const poke = createPokeSection(pokemon)
-    
+        
         pokemonList.appendChild(poke)
+        
+    
     })
+    
 }
 
 
 
 
 function createPokeSection (pokemon){
-    
+    // console.log(pokemon)
     const listPoke = document.createElement('li')
     const liDiv = document.createElement('div')   
     
@@ -45,10 +48,10 @@ function createPokeSection (pokemon){
 async function delightAPI(){
     
     const load = document.querySelector('#loading')
-    load.innerText = 'Carregando...'
+   
 
     const PokemonAPI = await fetch(`https://pokeapi.co/api/v2/pokemon/`, {
-        method: 'GET' ,
+        method: 'GET',
         headers: {
             'Content-type': 'application/json'
         }
@@ -61,13 +64,11 @@ async function delightAPI(){
     renderPokeSection()
         
     .catch(error => console.log(error))   
-
-    // load.classList.add('hidden')
     
     return PokemonAPI
     
 }
-delightAPI()
+
 
 
     
@@ -76,31 +77,25 @@ delightAPI()
 async function getPokemonByName(pokemonName){
     
     const name = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`, {
-        method:'GET' ,
+        method:'GET',
         headers: {
             'Content-Type': 'application/json'
         }
     }) 
-    console.log(pokemonName)
     
     .then(response => response.json())
     
     .then(response => {
-        
-        console.log(response)
 
-      
-        
-
+        // console.log(response)
         return(response)
     })
-    
-    // console.log(response)
+    // console.log(name)
     return name
 
 }
-// getPokemonByName()
-// console.log(getPokemonByName())       
+
+  
         
 function renderSearch() {
 
@@ -108,18 +103,21 @@ function renderSearch() {
     const searchIcon = document.querySelector('#search')
     
     searchIcon.addEventListener('click', () => {
-        // console.log('click')
+       
         getPokemonByName(searchInput.value.toLowerCase())
-        // console.log(getPokemonByName())
+       
     })
+
+    // const pk = getPokemonByName("metapod")
+    // console.log(pk)
 }
+
 renderSearch()
-// console.log(renderSearch())
-    
+
+delightAPI()
 
 
 
-// console.log(getPokemonByName())
 
 
 // falta rederizar a pesquisa de nome no input 
