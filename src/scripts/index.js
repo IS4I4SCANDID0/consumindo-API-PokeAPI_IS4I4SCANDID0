@@ -18,6 +18,7 @@ async function renderPokeSection(){
 
 
 function createPokeSection (pokemon){
+    
     const listPoke = document.createElement('li')
     const liDiv = document.createElement('div')   
     
@@ -44,9 +45,9 @@ function createPokeSection (pokemon){
 async function delightAPI(){
     
     const load = document.querySelector('#loading')
-    // load.innerText = 'Carregando...'
+    load.innerText = 'Carregando...'
 
-    const PokemonAPI = await fetch(`https://pokeapi.co/api/v2/pokemon`, {
+    const PokemonAPI = await fetch(`https://pokeapi.co/api/v2/pokemon/`, {
         method: 'GET' ,
         headers: {
             'Content-type': 'application/json'
@@ -72,12 +73,13 @@ delightAPI()
 
 async function getPokemonByName(pokemonName){
     
-    const pokeName = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`, {
+    const name = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`, {
         method:'GET' ,
         headers: {
             'Content-Type': 'application/json'
         }
     }) 
+    console.log(pokemonName)
     
     .then(response => response.json())
     
@@ -85,14 +87,14 @@ async function getPokemonByName(pokemonName){
         
         console.log(response)
 
-        renderPokeSection(response)
+        renderPokeSection()
         
 
         return(response)
     })
     
     // console.log(response)
-    return pokeName
+    return name
 
 }
 // getPokemonByName()
@@ -104,9 +106,9 @@ function renderSearch() {
     const searchIcon = document.querySelector('.search')
     
     searchIcon.addEventListener('click', () => {
-
+        // console.log('click')
         getPokemonByName(searchInput.value.toLowerCase())
-        // console.log(getPokemonByName())
+        console.log(getPokemonByName())
     })
 }
 renderSearch()
@@ -118,7 +120,9 @@ renderSearch()
 // console.log(getPokemonByName())
 
 
-// falta rederizar a pesquisa de nome no input
+// falta rederizar a pesquisa de nome no input 
+//[hipótese o ícone de pesquisa está causando conflito, pq ele é o responsável por renserizar todos]
+
 // dar uma olhada na função de renderSearch, 
 // tentar fazer uma animação simples para ficar bonito
 
