@@ -25,6 +25,7 @@ async function delightAPI(){
     
 }
 delightAPI()
+
     
 
 
@@ -69,6 +70,8 @@ async function getPokemonByName(pokemonName){
         // console.log(response)
         return(response)
     })
+
+    console.log(getPokemonByName('metapod'))
     // console.log(name)
     return name
 
@@ -78,21 +81,16 @@ async function getPokemonByName(pokemonName){
         
 function renderSearch() {
 
-    const searchInput = document.querySelector('input')
+    const searchInput = document.querySelector('.pokemonSearch')
     const searchIcon = document.querySelector('#search')
     
     searchIcon.addEventListener('click', () => {
-       console.log(searchIcon)
+    //    console.log('click')
         getPokemonByName(searchInput.value.toLowerCase())
 
-        // const pok = getPokemonByName()
-        // console.log(pok)
     })
-
-    // const pkm = renderSearch()
-    // console.log(pkm)
 }
-renderSearch
+renderSearch()
 
     
     
@@ -104,10 +102,7 @@ renderSearch
 
 
 
-// falta rederizar a pesquisa de nome no input 
-//[hipótese o ícone de pesquisa está causando conflito, pq ele é o responsável por renserizar todos]
-
-// dar uma olhada na função de renderSearch, 
+//problema de renderizar um o card persite e ainda não encontrei nada no console, mas Deus vai me mostrar pra eu concertar  
 // tentar fazer uma animação simples para ficar bonito
 
 
