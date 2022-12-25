@@ -1,7 +1,7 @@
-async function delightAPI(){
-    
+async function delightAPI() {
+
     const load = document.querySelector('#loading')
-    
+
     const PokemonAPI = await fetch(`https://pokeapi.co/api/v2/pokemon/`, {
         method: 'GET',
         headers: {
@@ -10,29 +10,31 @@ async function delightAPI(){
     })
     
     .then(response => response.json())
-    
-    .then(response => response) 
-    
-    // renderPokeSection()
-    
-    .catch(error => console.log(error))   
-    
+
+    .then(response => {
+        
+        return response
+    })
+    // .catch(error => console.log(error))   
+
     load.innerHTML = ''
 
     load.classList.add('hidden')
-    
+
     return PokemonAPI
-    
+
 }
 delightAPI()
+        
 
-    
+
+
 
 
 async function renderPokeList() {
 
     const pokemonUl = document.querySelector('.container--list')
-    
+
     const pokemonList = await delightAPI()
 
     pokemonList.results.forEach(pokemon => {
@@ -48,52 +50,61 @@ async function renderPokeList() {
             </li>        
         `)
     })
-                    
-}                
-renderPokeList()  
-        
+
+}
+renderPokeList()
 
 
-async function getPokemonByName(pokemonName){
-    
+
+
+
+async function getPokemonByName(pokemonName) {
+
     const name = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`, {
-        method:'GET',
+        method: 'GET',
         headers: {
             'Content-Type': 'application/json'
         }
-    }) 
-    
-    .then(response => response.json())
-    
-    .then(response => {
-
-        // console.log(response)
-        return(response)
     })
 
-    console.log(getPokemonByName('metapod'))
-    // console.log(name)
-    return name
+        .then(response => response.json())
 
+        .then(response => {
+
+            // console.log(response)
+            return (response)
+        })
+
+        return name
 }
+console.log(getPokemonByName())
 
-  
-        
+
+
 function renderSearch() {
 
     const searchInput = document.querySelector('.pokemonSearch')
     const searchIcon = document.querySelector('#search')
-    
+
     searchIcon.addEventListener('click', () => {
-    //    console.log('click')
+
         getPokemonByName(searchInput.value.toLowerCase())
 
+        // pokemonUl.innerHTML = ''
+
+        // renderPokeList.insertAdjacentHTML('beforeed', `
+        //     <li>
+        //         <img  
+        //             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${numberOnPokedex}.png" 
+        //             alt=${searchInput.value}>
+        //         <h2>${searchInput.value.toLowerCase()}</h2>
+        //     </li> 
+
+        // `)
     })
 }
 renderSearch()
-
-    
-    
+// console.log(renderSearch())
 
 
 
@@ -101,13 +112,12 @@ renderSearch()
 
 
 
+// tenho que descobrir o poruqe a função getpokemonByName está retornando promessa
+//**ACHO Q RESOLVI ESSE PROBLEMA PQ NO CONSOLE NÃO MOSTRA NADA**
 
-//problema de renderizar um o card persite e ainda não encontrei nada no console, mas Deus vai me mostrar pra eu concertar  
-// tentar fazer uma animação simples para ficar bonito
 
 
-    
-  
-  
+
+
 
 
