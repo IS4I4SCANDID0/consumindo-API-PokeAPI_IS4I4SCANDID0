@@ -1,29 +1,31 @@
 async function delightAPI(){
     
     const load = document.querySelector('#loading')
-   
-
+    
     const PokemonAPI = await fetch(`https://pokeapi.co/api/v2/pokemon/`, {
         method: 'GET',
         headers: {
             'Content-type': 'application/json'
         }
     })
-
+    
     .then(response => response.json())
-        
+    
     .then(response => response) 
-
+    
     // renderPokeSection()
-        
+    
     .catch(error => console.log(error))   
     
-    // load.classList.add('hidden')
+    load.innerHTML = ''
 
+    load.classList.add('hidden')
+    
     return PokemonAPI
     
 }
 delightAPI()
+    
 
 
 async function renderPokeList() {
@@ -49,117 +51,54 @@ async function renderPokeList() {
 }                
 renderPokeList()  
         
+
+
+async function getPokemonByName(pokemonName){
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-// renderPokeList()
-
-// async function renderPokeSection(){
-
-//     const pokemonList = document.querySelector('.container--list') 
+    const name = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`, {
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }) 
     
-//     const pokemons = await delightAPI()
+    .then(response => response.json())
     
-//     pokemonList.innerHTML = ''
-    
-//     pokemons.results.forEach(pokemon => {
-        
-//         const poke = createPokeSection(pokemon)
-        
-//         pokemonList.appendChild(poke)
-        
-    
-//     })
-    
-// }
+    .then(response => {
 
+        // console.log(response)
+        return(response)
+    })
+    // console.log(name)
+    return name
 
-
-
-// function createPokeSection (pokemon){
-//     // console.log(pokemon)
-//     const listPoke = document.createElement('li')
-//     const liDiv = document.createElement('div')   
-    
-//     
-    
-//     const image = document.createElement('img')
-//     image.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${numberOnPokedex}.png` 
-//     image.alt = `${pokemon.name}`
-//     image.classList.add('pokemons')
-//     liDiv.appendChild(image)
-
-//     const text = document.createElement('h2')
-//     text.innerText = `${pokemon.name}`   
-
-//     listPoke.append(liDiv, text)
-
-//     return listPoke
-// }
-
-
-
-
-
-
-
-
-
-    
-
-
-// async function getPokemonByName(pokemonName){
-    
-//     const name = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`, {
-//         method:'GET',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         }
-//     }) 
-    
-//     .then(response => response.json())
-    
-//     .then(response => {
-
-//         // console.log(response)
-//         return(response)
-//     })
-//     // console.log(name)
-//     return name
-
-// }
+}
 
   
         
-// function renderSearch() {
+function renderSearch() {
 
-//     const searchInput = document.querySelector('input')
-//     const searchIcon = document.querySelector('#search')
+    const searchInput = document.querySelector('input')
+    const searchIcon = document.querySelector('#search')
     
-//     searchIcon.addEventListener('click', () => {
-       
-//         getPokemonByName(searchInput.value.toLowerCase())
-       
-//     })
+    searchIcon.addEventListener('click', () => {
+       console.log(searchIcon)
+        getPokemonByName(searchInput.value.toLowerCase())
 
-//     // const pk = getPokemonByName("metapod")
-//     // console.log(pk)
-// }
+        // const pok = getPokemonByName()
+        // console.log(pok)
+    })
 
-// renderSearch()
+    // const pkm = renderSearch()
+    // console.log(pkm)
+}
+renderSearch
 
-// delightAPI()
+    
+    
+
+
+
 
 
 
