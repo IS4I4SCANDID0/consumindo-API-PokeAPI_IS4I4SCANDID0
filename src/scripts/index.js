@@ -8,11 +8,11 @@ async function delightAPI() {
             'Content-type': 'application/json'
         }
     })
-    
+
     .then(response => response.json())
 
     .then(response => {
-        
+
         return response
     })
     // .catch(error => console.log(error))   
@@ -24,8 +24,9 @@ async function delightAPI() {
     return PokemonAPI
 
 }
-delightAPI()
-        
+// await delightAPI()
+// delightAPI()
+
 
 
 
@@ -36,7 +37,7 @@ async function renderPokeList() {
     const pokemonUl = document.querySelector('.container--list')
 
     const pokemonList = await delightAPI()
-
+    
     pokemonList.results.forEach(pokemon => {
 
         const numberOnPokedex = pokemon.url.slice(34, -1)
@@ -53,14 +54,15 @@ async function renderPokeList() {
 
 }
 renderPokeList()
+// console.log(renderPokeList())
 
 
 
 
 
-async function getPokemonByName(pokemonName) {
+function getPokemonByName(pokemonName) {
 
-    const name = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`, {
+    const name = fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -71,13 +73,13 @@ async function getPokemonByName(pokemonName) {
 
         .then(response => {
 
-            // console.log(response)
+            console.log(response)
             return (response)
         })
 
-        return name
+    return name
 }
-console.log(getPokemonByName())
+// console.log(getPokemonByName())
 
 
 
@@ -89,10 +91,13 @@ function renderSearch() {
     searchIcon.addEventListener('click', () => {
 
         getPokemonByName(searchInput.value.toLowerCase())
+        console.log(getPokemonByName(searchInput.value.toLowerCase()))
+       
+        // const pokemonUl = document.querySelector('.container--list')
 
         // pokemonUl.innerHTML = ''
 
-        // renderPokeList.insertAdjacentHTML('beforeed', `
+        // pokemonUl.insertAdjacentHTML('beforeed', `
         //     <li>
         //         <img  
         //             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${numberOnPokedex}.png" 
@@ -103,6 +108,8 @@ function renderSearch() {
         // `)
     })
 }
+// delightAPI()
+
 renderSearch()
 // console.log(renderSearch())
 
@@ -112,7 +119,7 @@ renderSearch()
 
 
 
-// tenho que descobrir o poruqe a função getpokemonByName está retornando promessa
+// tenho que descobrir o poruqe a função getpokemonByName está retornando promessa{problema peersiste desde ontem}
 //**ACHO Q RESOLVI ESSE PROBLEMA PQ NO CONSOLE NÃO MOSTRA NADA**
 
 
