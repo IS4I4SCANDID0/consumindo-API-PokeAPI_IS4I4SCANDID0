@@ -65,106 +65,62 @@ async function getPokemonByName(pokemonName) {
         .then(response => response.json())
         .then(response => {
 
-            // renderPokeList()
-
-            return response
+            const find = response.species
+            
+            console.log (find)
+            // return response
         })
 
     return name
 }
 
-// async function auxiliarySearch({ species }) {
-
-//     const pokemonUl = document.querySelector('.container--list')
-
-//     const numberOnPoke = species.url.slice(41, -1)
-
-//     const auxliary = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${numberOnPoke}`, {
-//         method: 'GET',
-//         headers: {
-//             'Content-Type': 'applicatio/json'
-//         }
-//             .them(response => response.json())
-//             .them(response => {
-//                 console.log(response)
-//                 // getPokemonByName(searchInput.value.toLowerCase())
-
-//                 return response
-//             })
-
-//     })
-
-//     pokemonUl.innerHTML = ''
-
-//     // renderPokeList()
-
-//     pokemonUl.insertAdjacentHTML('beforeed', `
-//             <li>
-//                 <img  
-//                     src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${numberOnPoke}.png" 
-//                     alt=${get}>
-//                 <h2>${searchInput.value.toLowerCase()}</h2>
-//             </li> 
-
-//         `)
-
-
-//     return auxliary
-// }
-// auxiliarySearch(name, url)
-
-function renderSearch() {
+// preciso mesclar as funções de renderizar e de pesquisar para ter resultado, pq o response só é válido dentro do escopo do .them
+// atualmente consegui acessar a chave 'species' q contém op nome e a url com imagens do pkemons  
+async function renderSearch() {
 
     const searchInput = document.querySelector('.pokemonSearch')
+    
     const searchIcon = document.querySelector('#search')
-
-    searchIcon.addEventListener('click', () => {
-
+    
+    searchIcon.addEventListener('click', (e) => {
+        e.preventDefault()
+            
         getPokemonByName(searchInput.value.toLocaleLowerCase())
-
-        // const getOnePokemon = species
-
-        // const {name, url} = 
-
-
-
-        // const pokemonUl = document.querySelector('.container--list')
-
-        // pokemonUl.innerHTML = ''
-        // renderPokeList(getPokemonByName())
-        // renderPokeList()
-
-        // pokemonUl.insertAdjacentHTML('beforeed', `
-        //     <li>
-        //         <img  
-        //             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${numberOnPokedex}.png" 
-        //             alt=${searchInput.value}>
-        //         <h2>${searchInput.value.toLowerCase()}</h2>
-        //     </li> 
-
-        // `)
     })
+    
 }
-delightAPI()
+
 renderSearch()
 
+    
+   
+
+
+// delightAPI()
+
+
+                
+                
+                
+                
 
 
 
-// console.log(renderSearch())
 
 
 
 
-
+                
+                
 //slice(41, -1) ou slice(42,-1)
-
+                
 // tenho que descobrir o poruqe a função getpokemonByName está retornando promessa{problema peersiste desde ontem}
 //**ACHO Q RESOLVI ESSE PROBLEMA PQ NO CONSOLE NÃO MOSTRA NADA**
-
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
+                
+                
