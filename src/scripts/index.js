@@ -10,10 +10,10 @@ async function delightAPI() {
     })
         .then(response => response.json())
         .then(response => {
-            // console.log(response)
+            
             return response
         })
-    // .catch(error => console.log(error))   
+    .catch(error => console.log(error))   
 
     load.innerHTML = ''
 
